@@ -106,11 +106,6 @@ while true; do
         echo -e "\n${BOLD}${RED}[✗] Invalid choice. Please enter 1, 2, or 3.${NC}"
     fi
 done
-else
-    echo -e "${BOLD}${YELLOW}[✓] No existing swarm.pem found. Cloning repository...${NC}"
-    rm -rf "$SWARM_DIR"
-    cd $HOME && [ -d rl-swarm ] && rm -rf rl-swarm; git clone https://github.com/jitkumark1232/rl-swarm.git > /dev/null 2>&1
-fi
 
 cd rl-swarm || {
     echo -e "${BOLD}${RED}[✗] Failed to enter rl-swarm directory. Exiting.${NC}"
