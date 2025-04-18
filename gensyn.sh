@@ -5,14 +5,26 @@ BOLD="\e[1m"
 RED="\e[31m"
 GREEN="\e[32m"
 YELLOW="\e[33m"
+CYAN="\e[36m"
 NC="\e[0m"
 
 SWARM_DIR="$HOME/rl-swarm"
 TEMP_DATA_PATH="$SWARM_DIR/modal-login/temp-data"
-HOME_DIR="$HOME"
 GENSYN_TESTNET_DIR="$(pwd)"
 
-cd $HOME
+# Ensure $HOME is set and accessible
+if [ -z "$HOME" ] || [ ! -d "$HOME" ]; then
+    echo -e "${BOLD}${RED}[✗] HOME directory not set or does not exist. Exiting.${NC}"
+    exit 1
+fi
+
+cd "$HOME" || {
+    echo -e "${BOLD}${RED}[✗] Failed to navigate to HOME directory. Exiting.${NC}"
+    exit 1
+}
+
+# Debugging HOME variable
+echo -e "${BOLD}${YELLOW}HOME directory is: $HOME${NC}"
 
 # Prompt the user to choose an option
 while true; do
@@ -37,9 +49,18 @@ while true; do
             exit 1
         }
 
-        # Clone the repo into /home/rl-swarm
-        echo -e "${BOLD}${YELLOW}[✓] Cloning the GitHub repository...${NC}"
-        cd $HOME && git clone https://github.com/jitkumark1232/rl-swarm.git > /dev/null 2>&1
+        # Debugging: Check if destination directory exists
+        echo -e "${BOLD}${YELLOW}[✓] Cloning the GitHub repository into $SWARM_DIR...${NC}"
+        if [ -d "$SWARM_DIR" ]; then
+            echo -e "${BOLD}${CYAN}[!] Removing pre-existing directory: $SWARM_DIR...${NC}"
+            rm -rf "$SWARM_DIR"
+        fi
+
+        # Clone the repo into $SWARM_DIR
+        git clone https://github.com/jitkumark1232/rl-swarm.git "$SWARM_DIR" || {
+            echo -e "${BOLD}${RED}[✗] Failed to clone repository. Exiting.${NC}"
+            exit 1
+        }
 
         # Move additional files if they exist
         [ -f "$GENSYN_TESTNET_DIR/userData.json" ] && mv "$GENSYN_TESTNET_DIR/userData.json" "$TEMP_DATA_PATH/"
@@ -50,22 +71,28 @@ while true; do
         break
 
     elif [ "$choice" == "2" ]; then
-    echo -e "${BOLD}${YELLOW}[✓] Option 2 selected: Checking for swarm.pem in /home/rl-swarm...${NC}"
+        echo -e "${BOLD}${YELLOW}[✓] Option 2 selected: Checking for swarm.pem in /home/rl-swarm...${NC}"
 
-    # Check if swarm.pem exists in /home/rl-swarm
-    if [ -f "$SWARM_DIR/swarm.pem" ]; then
-        echo -e "${BOLD}${GREEN}[✓] swarm.pem found in /home/rl-swarm.${NC}"
+        # Check if swarm.pem exists in /home/rl-swarm
+        if [ -f "$SWARM_DIR/swarm.pem" ]; then
+            echo -e "${BOLD}${GREEN}[✓] swarm.pem found in /home/rl-swarm.${NC}"
 
-        # Clone the repo into /home/rl-swarm
-        echo -e "${BOLD}${YELLOW}[✓] Cloning the GitHub repository...${NC}"
-        cd $HOME && git clone https://github.com/jitkumark1232/rl-swarm.git > /dev/null 2>&1
-    else
-        echo -e "${BOLD}${RED}[✗] No swarm.pem found in /home/rl-swarm. Returning to choices...${NC}"
+            # Debugging: Check if destination directory exists
+            echo -e "${BOLD}${YELLOW}[✓] Cloning the GitHub repository into $SWARM_DIR...${NC}"
+            if [ -d "$SWARM_DIR" ]; then
+                echo -e "${BOLD}${CYAN}[!] Removing pre-existing directory: $SWARM_DIR...${NC}"
+                rm -rf "$SWARM_DIR"
+            fi
 
-        # Restart the option prompt
-        continue
-    fi
-    break
+            git clone https://github.com/jitkumark1232/rl-swarm.git "$SWARM_DIR" || {
+                echo -e "${BOLD}${RED}[✗] Failed to clone repository. Exiting.${NC}"
+                exit 1
+            }
+        else
+            echo -e "${BOLD}${RED}[✗] No swarm.pem found in /home/rl-swarm. Returning to choices...${NC}"
+            continue
+        fi
+        break
 
     elif [ "$choice" == "3" ]; then
         # Option 3: Delete swarm.pem and rl-swarm folder
@@ -74,16 +101,16 @@ while true; do
         # Delete swarm.pem from gensyn-testnet
         rm -f "$GENSYN_TESTNET_DIR/swarm.pem"
 
-        # Delete swarm.pem from rl-swarm and remove the rl-swarm folder if it exists
-        rm -f "$SWARM_DIR/swarm.pem"
-        if [ -d "$SWARM_DIR" ]; then
-            rm -rf "$SWARM_DIR"
-            echo -e "${BOLD}${YELLOW}[✓] Deleted existing rl-swarm folder.${NC}"
-        fi
+        # Debugging: Check if destination directory exists
+        echo -e "${BOLD}${YELLOW}[✓] Checking for rl-swarm directory in $HOME...${NC}"
+        rm -rf "$SWARM_DIR"
+        echo -e "${BOLD}${CYAN}[✓] Deleted pre-existing rl-swarm directory.${NC}"
 
-        # Clone the repo into /home/rl-swarm
-        echo -e "${BOLD}${YELLOW}[✓] Cloning the GitHub repository...${NC}"
-        cd $HOME && git clone https://github.com/jitkumark1232/rl-swarm.git > /dev/null 2>&1
+        # Clone the repo into $SWARM_DIR
+        git clone https://github.com/jitkumark1232/rl-swarm.git "$SWARM_DIR" || {
+            echo -e "${BOLD}${RED}[✗] Failed to clone repository. Exiting.${NC}"
+            exit 1
+        }
 
         # Create a fresh swarm.pem file
         touch "$SWARM_DIR/swarm.pem"
