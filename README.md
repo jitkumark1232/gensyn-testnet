@@ -145,5 +145,5 @@ nano $(python3 -c "import hivemind.p2p.p2p_daemon as m; print(m.__file__)")
 - Save this changes, first use `Ctrl` + `X` and then press `Y` and then press `Enter`
 - Now use this command again to run `rl-swarm`
 ```bash
-./run_rl_swarm.sh
+dos2unix run_rl_swarm.sh && chmod +x run_rl_swarm.sh && ./run_rl_swarm.sh
 ```
