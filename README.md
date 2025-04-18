@@ -71,6 +71,9 @@ apt update && apt install -y sudo
 ```bash
 sudo apt update && sudo apt install -y python3 python3-venv python3-pip curl wget screen git lsof nano unzip
 ```
+```bash
+pip install hivemind colorlog
+```
 3. **Install Node.js and npm**  
 ```bash
 curl -sSL https://raw.githubusercontent.com/zunxbt/installation/main/node.sh | bash
@@ -87,9 +90,7 @@ cd $HOME && rm -rf gensyn-testnet && git clone https://github.com/jitkumark1232/
 ```bash
 source "$HOME/rl-swarm/.venv/bin/activate"
 ```
-```bash
-pip install hivemind colorlog
-```
+
 ```bash
 cd /root/rl-swarm/ && dos2unix run_rl_swarm.sh && chmod +x run_rl_swarm.sh && ./run_rl_swarm.sh
 ```
