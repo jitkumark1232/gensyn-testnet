@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Colors for better readability
 BOLD="\e[1m"
 RED="\e[31m"
 GREEN="\e[32m"
@@ -9,47 +10,96 @@ NC="\e[0m"
 SWARM_DIR="$HOME/rl-swarm"
 TEMP_DATA_PATH="$SWARM_DIR/modal-login/temp-data"
 HOME_DIR="$HOME"
+GENSYN_TESTNET_DIR="$(pwd)"
 
 cd $HOME
 
-if [ -f "$SWARM_DIR/swarm.pem" ]; then
-    echo -e "${BOLD}${YELLOW}You already have an existing ${GREEN}swarm.pem${YELLOW} file.${NC}\n"
-    echo -e "${BOLD}${YELLOW}Do you want to:${NC}"
-    echo -e "${BOLD}1) Use the existing swarm.pem${NC}"
-    echo -e "${BOLD}${RED}2) Delete existing swarm.pem and start fresh${NC}"
+# Prompt the user to choose an option
+while true; do
+    echo -e "${BOLD}${YELLOW}Please choose an option:${NC}"
+    echo -e "${BOLD}${CYAN}1) Download swarm.pem via URL${NC}"
+    echo -e "${BOLD}2) Use existing swarm.pem from gensyn-testnet${NC}"
+    echo -e "${BOLD}${RED}3) Delete existing swarm.pem and start fresh${NC}"
+    read -r -p $'\e[1mEnter your choice (1, 2, or 3): \e[0m' choice
 
-    while true; do
-        read -p $'\e[1mEnter your choice (1 or 2): \e[0m' choice
-        if [ "$choice" == "1" ]; then
-            echo -e "\n${BOLD}${YELLOW}[✓] Using existing swarm.pem...${NC}"
-            mv "$SWARM_DIR/swarm.pem" "$HOME_DIR/"
-            mv "$TEMP_DATA_PATH/userData.json" "$HOME_DIR/" 2>/dev/null
-            mv "$TEMP_DATA_PATH/userApiKey.json" "$HOME_DIR/" 2>/dev/null
+    if [ "$choice" == "1" ]; then
+        # Option 1: Download via URL
+        echo -e "${BOLD}${CYAN}[✓] Option 1 selected: Downloading swarm.pem via URL...${NC}"
+        read -r -p $'\e[1mEnter the source URL for swarm.pem: \e[0m' SWARM_PEM_URL
 
-            rm -rf "$SWARM_DIR"
+        # Create /home/rl-swarm if it doesn't exist
+        mkdir -p "$SWARM_DIR"
 
-            echo -e "${BOLD}${YELLOW}[✓] Cloning fresh repository...${NC}"
-            cd $HOME && git clone https://github.com/zunxbt/rl-swarm.git > /dev/null 2>&1
+        # Download the file
+        echo -e "${BOLD}${YELLOW}[✓] Downloading swarm.pem from the provided source URL...${NC}"
+        wget -q --show-progress "$SWARM_PEM_URL" -O "$SWARM_DIR/swarm.pem" || {
+            echo -e "${BOLD}${RED}[✗] Failed to download swarm.pem. Exiting.${NC}"
+            exit 1
+        }
 
-            mv "$HOME_DIR/swarm.pem" rl-swarm/
-            mv "$HOME_DIR/userData.json" rl-swarm/modal-login/temp-data/ 2>/dev/null
-            mv "$HOME_DIR/userApiKey.json" rl-swarm/modal-login/temp-data/ 2>/dev/null
-            break
-        elif [ "$choice" == "2" ]; then
-            echo -e "${BOLD}${YELLOW}[✓] Removing existing folder and starting fresh...${NC}"
-            rm -rf "$SWARM_DIR"
-            cd $HOME && git clone https://github.com/zunxbt/rl-swarm.git > /dev/null 2>&1
-            break
+        # Clone the repo
+        echo -e "${BOLD}${YELLOW}[✓] Cloning the GitHub repository...${NC}"
+        git clone https://github.com/jitkumark1232/gensyn-testnet.git "$SWARM_DIR" > /dev/null 2>&1
+
+        # Move additional files if they exist
+        [ -f "$GENSYN_TESTNET_DIR/userData.json" ] && mv "$GENSYN_TESTNET_DIR/userData.json" "$TEMP_DATA_PATH/"
+        [ -f "$GENSYN_TESTNET_DIR/userApiKey.json" ] && mv "$GENSYN_TESTNET_DIR/userApiKey.json" "$TEMP_DATA_PATH/"
+
+        # Remove swarm.pem from gensyn-testnet
+        rm -f "$GENSYN_TESTNET_DIR/swarm.pem"
+        break
+
+    elif [ "$choice" == "2" ]; then
+        # Option 2: Use existing swarm.pem from gensyn-testnet
+        echo -e "${BOLD}${YELLOW}[✓] Option 2 selected: Using existing swarm.pem...${NC}"
+
+        # Check if swarm.pem exists in gensyn-testnet
+        if [ -f "$GENSYN_TESTNET_DIR/swarm.pem" ]; then
+            # Create /home/rl-swarm if it doesn't exist
+            mkdir -p "$SWARM_DIR"
+
+            # Move swarm.pem to /home/rl-swarm
+            mv "$GENSYN_TESTNET_DIR/swarm.pem" "$SWARM_DIR/"
+
+            # Clone the repo
+            echo -e "${BOLD}${YELLOW}[✓] Cloning the GitHub repository...${NC}"
+            git clone https://github.com/jitkumark1232/gensyn-testnet.git "$SWARM_DIR" > /dev/null 2>&1
         else
-            echo -e "\n${BOLD}${RED}[✗] Invalid choice. Please enter 1 or 2.${NC}"
+            echo -e "${BOLD}${RED}[✗] No swarm.pem file found in gensyn-testnet. Exiting.${NC}"
+            exit 1
         fi
-    done
-else
-    echo -e "${BOLD}${YELLOW}[✓] No existing swarm.pem found. Cloning repository...${NC}"
-    cd $HOME && [ -d rl-swarm ] && rm -rf rl-swarm; git clone https://github.com/zunxbt/rl-swarm.git > /dev/null 2>&1
-fi
+        break
 
-cd rl-swarm || { echo -e "${BOLD}${RED}[✗] Failed to enter rl-swarm directory. Exiting.${NC}"; exit 1; }
+    elif [ "$choice" == "3" ]; then
+        # Option 3: Delete swarm.pem and rl-swarm folder
+        echo -e "${BOLD}${RED}[✓] Option 3 selected: Deleting existing swarm.pem and starting fresh...${NC}"
+
+        # Delete swarm.pem from gensyn-testnet
+        rm -f "$GENSYN_TESTNET_DIR/swarm.pem"
+
+        # Delete the rl-swarm folder if it exists
+        if [ -d "$SWARM_DIR" ]; then
+            rm -rf "$SWARM_DIR"
+            echo -e "${BOLD}${YELLOW}[✓] Deleted existing rl-swarm folder.${NC}"
+        fi
+
+        # Clone the repo
+        echo -e "${BOLD}${YELLOW}[✓] Cloning the GitHub repository...${NC}"
+        git clone https://github.com/jitkumark1232/gensyn-testnet.git "$SWARM_DIR" > /dev/null 2>&1
+
+        # Create a fresh swarm.pem file
+        touch "$SWARM_DIR/swarm.pem"
+        echo -e "${BOLD}${YELLOW}[✓] Created a new swarm.pem file in /home/rl-swarm.${NC}"
+        break
+
+    else
+        # Handle invalid input
+        echo -e "${BOLD}${RED}[✗] Invalid choice. Please enter 1, 2, or 3.${NC}"
+    fi
+done
+
+# Proceed to the next step
+cd "$SWARM_DIR" || { echo -e "${BOLD}${RED}[✗] Failed to enter rl-swarm directory. Exiting.${NC}"; exit 1; }
 
 if [ -n "$VIRTUAL_ENV" ]; then
     echo -e "${BOLD}${YELLOW}[✓] Deactivating existing virtual environment...${NC}"
