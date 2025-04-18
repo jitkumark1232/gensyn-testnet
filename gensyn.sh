@@ -50,25 +50,22 @@ while true; do
         break
 
     elif [ "$choice" == "2" ]; then
-        # Option 2: Use existing swarm.pem from gensyn-testnet
-        echo -e "${BOLD}${YELLOW}[✓] Option 2 selected: Using existing swarm.pem...${NC}"
+    echo -e "${BOLD}${YELLOW}[✓] Option 2 selected: Checking for swarm.pem in /home/rl-swarm...${NC}"
 
-        # Check if swarm.pem exists in gensyn-testnet
-        if [ -f "$GENSYN_TESTNET_DIR/swarm.pem" ]; then
-            # Create /home/rl-swarm if it doesn't exist
-            mkdir -p "$SWARM_DIR"
+    # Check if swarm.pem exists in /home/rl-swarm
+    if [ -f "$SWARM_DIR/swarm.pem" ]; then
+        echo -e "${BOLD}${GREEN}[✓] swarm.pem found in /home/rl-swarm.${NC}"
 
-            # Copy swarm.pem to /home/rl-swarm
-            cp "$GENSYN_TESTNET_DIR/swarm.pem" "$SWARM_DIR/"
+        # Clone the repo into /home/rl-swarm
+        echo -e "${BOLD}${YELLOW}[✓] Cloning the GitHub repository...${NC}"
+        git clone https://github.com/jitkumark1232/gensyn-testnet.git "$SWARM_DIR" > /dev/null 2>&1
+    else
+        echo -e "${BOLD}${RED}[✗] No swarm.pem found in /home/rl-swarm. Returning to choices...${NC}"
 
-            # Clone the repo into /home/rl-swarm
-            echo -e "${BOLD}${YELLOW}[✓] Cloning the GitHub repository...${NC}"
-            git clone https://github.com/jitkumark1232/gensyn-testnet.git "$SWARM_DIR" > /dev/null 2>&1
-        else
-            echo -e "${BOLD}${RED}[✗] No swarm.pem file found in gensyn-testnet. Exiting.${NC}"
-            exit 1
-        fi
-        break
+        # Restart the option prompt
+        continue
+    fi
+    break
 
     elif [ "$choice" == "3" ]; then
         # Option 3: Delete swarm.pem and rl-swarm folder
