@@ -39,7 +39,7 @@ while true; do
 
         # Clone the repo into /home/rl-swarm
         echo -e "${BOLD}${YELLOW}[✓] Cloning the GitHub repository...${NC}"
-        git clone https://github.com/jitkumark1232/rl-swarm.git "$SWARM_DIR" > /dev/null 2>&1
+        cd $HOME && git clone https://github.com/jitkumark1232/rl-swarm.git > /dev/null 2>&1
 
         # Move additional files if they exist
         [ -f "$GENSYN_TESTNET_DIR/userData.json" ] && mv "$GENSYN_TESTNET_DIR/userData.json" "$TEMP_DATA_PATH/"
@@ -58,7 +58,7 @@ while true; do
 
         # Clone the repo into /home/rl-swarm
         echo -e "${BOLD}${YELLOW}[✓] Cloning the GitHub repository...${NC}"
-        git clone https://github.com/jitkumark1232/rl-swarm.git "$SWARM_DIR" > /dev/null 2>&1
+        cd $HOME && git clone https://github.com/jitkumark1232/rl-swarm.git > /dev/null 2>&1
     else
         echo -e "${BOLD}${RED}[✗] No swarm.pem found in /home/rl-swarm. Returning to choices...${NC}"
 
@@ -83,7 +83,7 @@ while true; do
 
         # Clone the repo into /home/rl-swarm
         echo -e "${BOLD}${YELLOW}[✓] Cloning the GitHub repository...${NC}"
-        git clone https://github.com/jitkumark1232/rl-swarm.git "$SWARM_DIR" > /dev/null 2>&1
+        cd $HOME && git clone https://github.com/jitkumark1232/rl-swarm.git > /dev/null 2>&1
 
         # Create a fresh swarm.pem file
         touch "$SWARM_DIR/swarm.pem"
