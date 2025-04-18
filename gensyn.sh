@@ -37,7 +37,7 @@ while true; do
             exit 1
         }
 
-        # Clone the repo
+        # Clone the repo into /home/rl-swarm
         echo -e "${BOLD}${YELLOW}[✓] Cloning the GitHub repository...${NC}"
         git clone https://github.com/jitkumark1232/gensyn-testnet.git "$SWARM_DIR" > /dev/null 2>&1
 
@@ -58,10 +58,10 @@ while true; do
             # Create /home/rl-swarm if it doesn't exist
             mkdir -p "$SWARM_DIR"
 
-            # Move swarm.pem to /home/rl-swarm
-            mv "$GENSYN_TESTNET_DIR/swarm.pem" "$SWARM_DIR/"
+            # Copy swarm.pem to /home/rl-swarm
+            cp "$GENSYN_TESTNET_DIR/swarm.pem" "$SWARM_DIR/"
 
-            # Clone the repo
+            # Clone the repo into /home/rl-swarm
             echo -e "${BOLD}${YELLOW}[✓] Cloning the GitHub repository...${NC}"
             git clone https://github.com/jitkumark1232/gensyn-testnet.git "$SWARM_DIR" > /dev/null 2>&1
         else
@@ -77,13 +77,14 @@ while true; do
         # Delete swarm.pem from gensyn-testnet
         rm -f "$GENSYN_TESTNET_DIR/swarm.pem"
 
-        # Delete the rl-swarm folder if it exists
+        # Delete swarm.pem from rl-swarm and remove the rl-swarm folder if it exists
+        rm -f "$SWARM_DIR/swarm.pem"
         if [ -d "$SWARM_DIR" ]; then
             rm -rf "$SWARM_DIR"
             echo -e "${BOLD}${YELLOW}[✓] Deleted existing rl-swarm folder.${NC}"
         fi
 
-        # Clone the repo
+        # Clone the repo into /home/rl-swarm
         echo -e "${BOLD}${YELLOW}[✓] Cloning the GitHub repository...${NC}"
         git clone https://github.com/jitkumark1232/gensyn-testnet.git "$SWARM_DIR" > /dev/null 2>&1
 
@@ -109,6 +110,3 @@ fi
 echo -e "${BOLD}${YELLOW}[✓] Setting up Python virtual environment...${NC}"
 python3 -m venv .venv
 source .venv/bin/activate
-
-echo -e "${BOLD}${YELLOW}[✓] Running rl-swarm...${NC}"
-./run_rl_swarm.sh
