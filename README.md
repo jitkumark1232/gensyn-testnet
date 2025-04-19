@@ -86,9 +86,17 @@ curl -sSL https://raw.githubusercontent.com/zunxbt/installation/main/node.sh | b
 ```bash
 screen -S gensyn
 ```
-**( SKIP if doing for the 1st time )**
+## ⚠️Important⚠️ (SKIP) This step, If this your first time of setting up Gensyn Node
+Fist backup Your gensyn Node swarm.pem file
+Here's how u can do it in termius 
+
+**1st Method**
+watch this youtube tutorial.
+https://youtu.be/lBEjrUGKUN4
+
+**2nd Method**
 **if you want to importing old swarm.file then must use Gdrive url like the below example**
-```bash
+
 GDRIVE Always gives the sharing link instead of link that support direct downloading and gensyn script asks for direct downloading link so you must set it up properly
 here's how you can do it.
 follow this structure:
@@ -100,7 +108,8 @@ Then the url should be like this 👇👇
 - Direct Download Link:
 https://drive.google.com/uc?id=14LOT0Jb4mQEw-igPQpCr55Gaeq6ErU_2
 
-```
+**3rd Method**
+You can also backup Your files via running commands and for it move to the below Step of " ## 🔄️ Back up `swarm.pem` "
 
 5. **Run the swarm**
 
