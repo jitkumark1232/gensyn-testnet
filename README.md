@@ -86,7 +86,8 @@ curl -sSL https://raw.githubusercontent.com/zunxbt/installation/main/node.sh | b
 ```bash
 screen -S gensyn
 ```
-**Before proceeding to the 5th step, make sure to choose the correct choice and if importing old swarm.file then must use Gdrive url like the below example**
+**( SKIP if doing for the 1st time )**
+**if you want to importing old swarm.file then must use Gdrive url like the below example**
 ```bash
 GDRIVE Always gives the sharing link instead of link that support direct downloading and gensyn script asks for direct downloading link so you must set it up properly
 here's how you can do it.
