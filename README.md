@@ -57,7 +57,7 @@ https://github.com/user-attachments/assets/3969c1aa-65f6-443a-b088-004afa08448e
 
 ## Credit Goes to 
 
-1. **Thank you Legends to both the Zun & FragIfty01**
+1. **Thank you to both the Legends Zun & FragIfty01**
 ```bash
 These repo's helped me a lot while doing gensyn Node setup
 https://github.com/FragIfty01/Gensyn-via-Clore-ai/
