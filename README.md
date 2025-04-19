@@ -111,7 +111,10 @@ https://drive.google.com/uc?id=14LOT0Jb4mQEw-igPQpCr55Gaeq6ErU_2
 **3rd Method**
 You can also backup Your files via running commands and for it move to the below Step of " ## 🔄️ Back up `swarm.pem` "
 
-5. **Run the swarm**
+## Sign up here your NGROK Account 
+https://dashboard.ngrok.com/get-started/ and go to Your auth Option and save it then enter this key when asked in the code space.
+
+## 5. **Run the swarm**
 
 ```bash
 sudo apt update && sudo apt install dos2unix -y
