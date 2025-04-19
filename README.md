@@ -59,7 +59,7 @@ https://github.com/user-attachments/assets/3969c1aa-65f6-443a-b088-004afa08448e
 
 1. **Thank you to both the Legends Zun & FragIfty01**
 ```bash
-These repo's helped me a lot while doing gensyn Node setup
+These repos helped me a lot while doing gensyn Node setup
 https://github.com/FragIfty01/Gensyn-via-Clore-ai/
 https://github.com/zunxbt/gensyn-testnet
 ```
@@ -119,10 +119,9 @@ https://dashboard.ngrok.com/get-started/ and go to `Your auth` Option and save i
 ```bash
 sudo apt update && sudo apt install dos2unix -y
 cd $HOME && rm -rf gensyn-testnet && git clone https://github.com/jitkumark1232/gensyn-testnet.git && dos2unix gensyn-testnet/gensyn.sh && chmod +x gensyn-testnet/gensyn.sh && ./gensyn-testnet/gensyn.sh
-&& cd /root/rl-swarm/hivemind_exp/gsm8k/stage2_rewards.py && dos2unix /root/rl-swarm/hivemind_exp/gsm8k/stage2_rewards.py
+&& dos2unix /root/rl-swarm/hivemind_exp/gsm8k/stage2_rewards.py
 ```
 ```bash
-cd $HOME
 source "$HOME/rl-swarm/.venv/bin/activate"
 ```
 
