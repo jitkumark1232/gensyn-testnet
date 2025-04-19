@@ -1,4 +1,4 @@
-<h2 align=center>Gensyn Testnet Node Guide</h2>
+<h2 align=center>Gensyn Testnet Node Guide Via using Ngrok URL forwarding with import option for existing swarm.pem file via downloading through source url (Gdrive etc) </h2>
 
 ## 💻 System Requirements
 
@@ -13,7 +13,7 @@
 ## 📝 Signup & SSH Key Setup
 
 1. **Sign Up at Clore AI**  
-   👉 [https://clore.ai?ref_id=1pgsgg8q](https://clore.ai?ref_id=1pgsgg8q)
+   👉 [https://clore.ai?ref_id=epbb68cc](https://clore.ai?ref_id=epbb68cc)
 
 2. **Add SSH Key to Account**  
    🔐 [https://clore.ai/account#keys](https://clore.ai/account#keys)
@@ -55,6 +55,16 @@ Video
 
 https://github.com/user-attachments/assets/3969c1aa-65f6-443a-b088-004afa08448e
 
+## Credit Goes to 
+
+1. **Thank you Legends to both the Zun & FragIfty01
+```bash
+These repo's helped me a lot while doing gensyn Node setup
+https://github.com/FragIfty01/Gensyn-via-Clore-ai/
+https://github.com/zunxbt/gensyn-testnet
+```
+
+
 ## 📥 Installation
 
 1. **Install `sudo`**
@@ -76,7 +86,23 @@ curl -sSL https://raw.githubusercontent.com/zunxbt/installation/main/node.sh | b
 ```bash
 screen -S gensyn
 ```
+**Before proceeding to the 5th step, make sure to choose the correct choice and if importing old swarm.file then must use Gdrive url like the below example**
+```bash
+GDRIVE Always gives the sharing link instead of link that support direct downloading and gensyn script asks for direct downloading link so you must set it up properly
+here's how you can do it.
+follow this structure:
+- Sharing Link:https://drive.google.com/file/d/14LOT0Jb4mQEw-igPQpCr55Gaeq6ErU_2/view?usp=sharing
+
+Example of File ID- 14LOT0Jb4mQEw-igPQpCr55Gaeq6ErU_2 and use it and ADD this id after /uc?id=14LOT0Jb4mQEw-igPQpCr55Gaeq6ErU_2
+Then the url should be like this 👇👇
+
+- Direct Download Link:
+https://drive.google.com/uc?id=14LOT0Jb4mQEw-igPQpCr55Gaeq6ErU_2
+
+```
+
 5. **Run the swarm**
+
 ```bash
 sudo apt update && sudo apt install dos2unix -y
 cd $HOME && rm -rf gensyn-testnet && git clone https://github.com/jitkumark1232/gensyn-testnet.git && dos2unix gensyn-testnet/gensyn.sh && chmod +x gensyn-testnet/gensyn.sh && ./gensyn-testnet/gensyn.sh
