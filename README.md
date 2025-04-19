@@ -10,56 +10,50 @@
 | **Python Version**                  | Python >= 3.10 (For Mac, you may need to upgrade)           |
 
 
-## 🌐 Rent GPU
-> [!Note]
-> **Renting GPU is not necessarily needed, you can still run this node on VPS or on WSL, but you may face OOM error plus you may have less winning rate, that is why my recommendation is renting a GPU if you can, otherwise you can proceed with VPS or WSL.**
-- Visit : [Quick Pod Website](https://console.quickpod.io?affiliate=64e0d2b2-59ee-4989-a05f-f4c3b6dbb2e4)
-- Sign Up using email address
-- Go to your email and verify your Quick Pod account
-- Click on `Add` button in the corner to deposit fund
-- You can deposit using crypto currency (from metamask) or using Credit card
-- Now go to `template` section and then select `Ubuntu 22.04 jammy` in the below
-- Now click on `Select GPU` and search `RTX 4090` and choose it
-- Now choose a GPU and click on `Create POD` button
-- Your GPU server will be deployed soon
-- You can simply click on `Connect` button and then choose `Connect to Web Terminal`
-- But if you are using different gpu provider then you should use `Connect via SSH` method mentioned below
+## 📝 Signup & SSH Key Setup
 
-## 🛜 Connect via SSH (Only for GPU)
-> [!Note]
-> **This step is only required if you running this node on GPU, if you want to use VPS or WSL, then skip this step and login to your VPS server using username and password which u received from the VPS provider and then move to [installation](https://github.com/zunxbt/gensyn-testnet?tab=readme-ov-file#-installation) section**
-- First open a terminal (this could be either WSL / Codespace / Command Prompt)
-- Use this below command to generate SSH-Key
-```
-ssh-keygen
-```
-- It will ask 3 questions like this :
-```
-Enter file in which to save the key (/home/codespace/.ssh/id_rsa):
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again: 
-```
-- You need to press `Enter` 3 times
-- After that you will get a message like this on your terminal
-```
-Your public key has been saved in /home/codespace/.ssh/id_rsa.pub
-```
-- `/home/codespace/.ssh/id_rsa.pub` is the path of this public key in my case, in your case it might be different
+1. **Sign Up at Clore AI**  
+   👉 [https://clore.ai?ref_id=1pgsgg8q](https://clore.ai?ref_id=1pgsgg8q)
 
-![Screenshot 2025-04-08 081948](https://github.com/user-attachments/assets/035803da-c5bb-454e-9db4-4459e2123128)
+2. **Add SSH Key to Account**  
+   🔐 [https://clore.ai/account#keys](https://clore.ai/account#keys)
 
-- You should use this command to see those ssh key :
-    - If you are using Linux/macOS (WSL) : `cat path/of/that/publickey` , in my case, it would be : `cat /home/codespace/.ssh/id_rsa.pub`
-    - If you are using Command Prompt : `type path\of\that\publickey`, in my case, it would be : `type \home\codespace\.ssh\id_rsa.pub`
-    - If you are using PowerShell : `Get-Content path\of\that\publickey`, in my case, it would be : `Get-Content \home\codespace\.ssh\id_rsa.pub`
-- Now copy this public key and go to hosting provider from where you bought GPU
-- After visiting the web hosting provider website, navigate to settings and there paste and save your ssh key
-- Now, copy the command you received after renting the GPU instance and paste it into the terminal where you generated the public key.
-- In my case, the command looks like this:
-```
-ssh -p 69 root@69.69.69.69
-```
-- Now paste this command on this terminal to access your GPU server
+![How to Add SSH Key](https://github.com/user-attachments/assets/c5a402df-db90-43ca-ad99-500dcf28335e)
+
+---
+
+## ⚙️ Server Setup (Clore Dashboard)
+
+1. Select `Ubuntu Jupyter` as the image.
+2. **Delete** extra HTTP ports.
+3. **Add** HTTP port: `3000`.
+4. Click **Create** to deploy your node.
+
+![Server Setup Screenshot](https://github.com/user-attachments/assets/eb8089fc-923a-4157-8143-450afaf4c2dd)
+
+---
+
+## 🔌 Connect to Your Server via SSH
+
+1. **Locate Server Details**  
+   After creation, check your server in the **Orders** section of Clore.  
+   Format: `Address : Port`
+
+2. **Connect Using Termius**  
+   [Download Termius](https://termius.com/) or use your preferred terminal client.
+
+3. **SSH Connection Command**  
+   ```bash
+   ssh -p <port> root@<address>
+
+
+![Image](https://github.com/user-attachments/assets/1f4ab34b-55cd-4604-9f44-29a950c7828d)
+
+e.g : For above case , I connect with ssh -p 1254 root@n1.us.clorecloud.net > Press enter > Ignore pass and select Key to connect > And we are in  !
+
+Video 
+
+https://github.com/user-attachments/assets/3969c1aa-65f6-443a-b088-004afa08448e
 
 ## 📥 Installation
 
