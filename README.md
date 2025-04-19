@@ -95,24 +95,24 @@ watch this youtube tutorial.
 https://youtu.be/lBEjrUGKUN4
 
 **2nd Method**
-**if you want to importing old swarm.file then must use Gdrive url like the below example**
+**if you want to importing old `swarm.pem` file then must use Gdrive url like the below example**
 
 GDRIVE Always gives the sharing link instead of link that support direct downloading and gensyn script asks for direct downloading link so you must set it up properly
 here's how you can do it.
 follow this structure:
-- Sharing Link:https://drive.google.com/file/d/14LOT0Jb4mQEw-igPQpCr55Gaeq6ErU_2/view?usp=sharing
+- `Sharing Link:https://drive.google.com/file/d/14LOT0Jb4mQEw-igPQpCr55Gaeq6ErU_2/view?usp=sharing`
 
-Example of File ID- 14LOT0Jb4mQEw-igPQpCr55Gaeq6ErU_2 and use it and ADD this id after /uc?id=14LOT0Jb4mQEw-igPQpCr55Gaeq6ErU_2
+Example of File ID- `14LOT0Jb4mQEw-igPQpCr55Gaeq6ErU_2` and use it and ADD this id after `/uc?id=14LOT0Jb4mQEw-igPQpCr55Gaeq6ErU_2`
 Then the url should be like this 👇👇
 
 - Direct Download Link:
-https://drive.google.com/uc?id=14LOT0Jb4mQEw-igPQpCr55Gaeq6ErU_2
+`https://drive.google.com/uc?id=14LOT0Jb4mQEw-igPQpCr55Gaeq6ErU_2`
 
 **3rd Method**
 You can also backup Your files via running commands and for it move to the below Step of " ## 🔄️ Back up `swarm.pem` "
 
 ## Sign up here your NGROK Account 
-https://dashboard.ngrok.com/get-started/ and go to Your auth Option and save it then enter this key when asked in the code space.
+https://dashboard.ngrok.com/get-started/ and go to `Your auth` Option and save it then enter this key when asked in the `code space.`
 
 ## 5. **Run the swarm**
 
