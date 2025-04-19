@@ -86,8 +86,10 @@ screen -S gensyn
 ```bash
 sudo apt update && sudo apt install dos2unix -y
 cd $HOME && rm -rf gensyn-testnet && git clone https://github.com/jitkumark1232/gensyn-testnet.git && dos2unix gensyn-testnet/gensyn.sh && chmod +x gensyn-testnet/gensyn.sh && ./gensyn-testnet/gensyn.sh
+&& cd /root/rl-swarm/hivemind_exp/gsm8k/stage2_rewards.py && dos2unix /root/rl-swarm/hivemind_exp/gsm8k/stage2_rewards.py
 ```
 ```bash
+cd $HOME
 source "$HOME/rl-swarm/.venv/bin/activate"
 ```
 
