@@ -18,7 +18,8 @@
 2. **Add SSH Key to Account**  
    🔐 [https://clore.ai/account#keys](https://clore.ai/account#keys)
 
-![How to Add SSH Key](https://github.com/user-attachments/assets/c5a402df-db90-43ca-ad99-500dcf28335e)
+![How to Add SSH Key] Watch below 👇👇 video 
+https://youtu.be/NsxK-y5LoyI
 
 ---
 
@@ -28,7 +29,7 @@
 2. **Delete** extra HTTP ports.
 3. **Add** HTTP port: `3000`.
 4. Click **Create** to deploy your node.
-
+Watch the Video Guide 👇👇
 https://www.youtube.com/embed/NsxK-y5LoyI
 
 ---
