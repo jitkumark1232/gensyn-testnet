@@ -29,8 +29,13 @@
 3. **Add** HTTP port: `3000`.
 4. Click **Create** to deploy your node.
 
-![Server Setup Screenshot](https://github.com/user-attachments/assets/eb8089fc-923a-4157-8143-450afaf4c2dd)
-
+<iframe width="560" height="315" 
+src="https://www.youtube.com/embed/NsxK-y5LoyI" 
+title="YouTube video player" 
+frameborder="0" 
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen>
+</iframe>
 ---
 
 ## 🔌 Connect to Your Server via SSH
