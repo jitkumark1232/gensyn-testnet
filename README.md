@@ -124,6 +124,7 @@ cd $HOME && rm -rf gensyn-testnet && git clone https://github.com/jitkumark1232/
 ```
 ```bash
 source "$HOME/rl-swarm/.venv/bin/activate"
+pip install hivemind colorlog
 ```
 
 ```bash
