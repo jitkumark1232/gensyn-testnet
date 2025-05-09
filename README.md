@@ -154,7 +154,7 @@ screen -S gensyn
 ```
 5. **Create a screen session**
 ```bash
-cd $HOME && rm -rf gensyn-testnet && git clone https://github.com/whalepiz/gensyn-testnet.git && chmod +x gensyn-testnet/cpu.sh && ./gensyn-testnet/cpu.sh
+cd $HOME && rm -rf gensyn-testnet && git clone https://github.com/jitkumark1232/gensyn-testnet.git && chmod +x gensyn-testnet/cpu.sh && ./gensyn-testnet/cpu.sh
 ```
 
 - It will ask some questions, you should send response properly
@@ -192,7 +192,7 @@ screen -S gensyn
 ```
 6. **Create a screen session**
 ```bash
-cd $HOME && rm -rf gensyn-testnet && git clone https://github.com/whalepiz/gensyn-testnet.git && chmod +x gensyn-testnet/gensyn.sh && ./gensyn-testnet/gensyn.sh
+cd $HOME && rm -rf gensyn-testnet && git clone https://github.com/jitkumark1232/gensyn-testnet.git && chmod +x gensyn-testnet/gensyn.sh && ./gensyn-testnet/gensyn.sh
 ```
 
 # Backup Instructions for `swarm.pem`
