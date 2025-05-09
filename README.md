@@ -140,7 +140,6 @@ sudo apt update && sudo apt install -y sudo
 2. **Install other dependencies**
 ```bash
 sudo apt update && sudo apt install -y python3 python3-venv python3-pip curl wget screen git lsof nano unzip
-sudo apt update
 sudo apt install dos2unix
 ```
 3. **Install Node.js and npm if not installed already**  
@@ -178,6 +177,7 @@ apt update && apt install -y sudo
 2. **Install other dependencies**
 ```bash
 sudo apt update && sudo apt install -y python3 python3-venv python3-pip curl wget screen git lsof nano unzip
+sudo apt install dos2unix
 ```
 3. **Install Node.js and npm`**
 ```bash
