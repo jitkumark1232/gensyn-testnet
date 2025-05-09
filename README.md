@@ -140,6 +140,8 @@ sudo apt update && sudo apt install -y sudo
 2. **Install other dependencies**
 ```bash
 sudo apt update && sudo apt install -y python3 python3-venv python3-pip curl wget screen git lsof nano unzip
+sudo apt update
+sudo apt install dos2unix
 ```
 3. **Install Node.js and npm if not installed already**  
 ```bash
@@ -154,7 +156,8 @@ screen -S gensyn
 ```
 5. **Create a screen session**
 ```bash
-cd $HOME && rm -rf gensyn-testnet && git clone https://github.com/jitkumark1232/gensyn-testnet.git && chmod +x gensyn-testnet/cpu.sh && ./gensyn-testnet/cpu.sh
+cd $HOME && rm -rf gensyn-testnet && git clone https://github.com/jitkumark1232/gensyn-testnet.git && cd gensyn-testnet && dos2unix cpu.sh && chmod +x cpu.sh
+./cpu.sh
 ```
 
 - It will ask some questions, you should send response properly
