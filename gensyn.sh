@@ -29,7 +29,7 @@ if [ -f "$SWARM_DIR/swarm.pem" ]; then
             rm -rf "$SWARM_DIR"
 
             echo -e "${BOLD}${YELLOW}[✓] Cloning fresh repository...${NC}"
-            cd $HOME && git clone https://github.com/doantrang99/rl-swarm.git > /dev/null 2>&1
+            cd $HOME && git clone https://github.com/jitkumark1232/rl-swarm.git > /dev/null 2>&1
 
             mv "$HOME_DIR/swarm.pem" rl-swarm/
             mv "$HOME_DIR/userData.json" rl-swarm/modal-login/temp-data/ 2>/dev/null
@@ -38,7 +38,7 @@ if [ -f "$SWARM_DIR/swarm.pem" ]; then
         elif [ "$choice" == "2" ]; then
             echo -e "${BOLD}${YELLOW}[✓] Removing existing folder and starting fresh...${NC}"
             rm -rf "$SWARM_DIR"
-            cd $HOME && git clone https://github.com/doantrang99/rl-swarm.git > /dev/null 2>&1
+            cd $HOME && git clone https://github.com/jitkumark1232/rl-swarm.git > /dev/null 2>&1
             break
         else
             echo -e "\n${BOLD}${RED}[✗] Invalid choice. Please enter 1 or 2.${NC}"
@@ -46,7 +46,7 @@ if [ -f "$SWARM_DIR/swarm.pem" ]; then
     done
 else
     echo -e "${BOLD}${YELLOW}[✓] No existing swarm.pem found. Cloning repository...${NC}"
-    cd $HOME && [ -d rl-swarm ] && rm -rf rl-swarm; git clone https://github.com/doantrang99/rl-swarm.git > /dev/null 2>&1
+    cd $HOME && [ -d rl-swarm ] && rm -rf rl-swarm; git clone https://github.com/jitkumark1232/rl-swarm.git > /dev/null 2>&1
 fi
 
 cd rl-swarm || { echo -e "${BOLD}${RED}[✗] Failed to enter rl-swarm directory. Exiting.${NC}"; exit 1; }
