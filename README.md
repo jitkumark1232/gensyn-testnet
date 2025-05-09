@@ -58,16 +58,116 @@ https://github.com/user-attachments/assets/3969c1aa-65f6-443a-b088-004afa08448e
 
 ## Credit Goes to 
 
-1. **Thank you to both the Legends Zun & FragIfty01**
+1. **Thanks to All the Legends WhalePiz, Zun & FragIfty01**
 ```bash
 These repos helped me a lot while doing gensyn Node setup
 https://github.com/FragIfty01/Gensyn-via-Clore-ai/
 https://github.com/zunxbt/gensyn-testnet
+https://github.com/whalepiz/gensyn-testnet
 ```
 
 
-## 📥 Installation
+<h2 align=center>Gensyn Testnet Node Guide - CPU - GPU</h2>
 
+
+
+**Note: - For personal computers that have not installed Linux Ubuntu on Windows, follow this step. 
+        - For computers that already have Linux Ubuntu on Windows or VPS, skip this step and proceed to the Installation NODE section.**
+
+
+**Follow Me: https://x.com/WhalePiz**
+
+**Telegram Group: https://t.me/Nexgenexplore**
+## PLEASE SELECT THE HARDWARE YOU WANT TO RUN ON
+
+ **1. CPU [INSTRUCTIONS FOR RUNNING WITH CPU](https://github.com/whalepiz/gensyn-testnet?tab=readme-ov-file#run-node-with-cpu)**
+
+ **2. GPU [INSTRUCTIONS FOR RUNNING WITH GPU](https://github.com/whalepiz/gensyn-testnet?tab=readme-ov-file#-run-node-with-gpu)** 
+
+## 💻 System Requirements
+
+| Requirement                        | Details                                                                                      |
+|-------------------------------------|---------------------------------------------------------------------------------------------|
+| **CPU Architecture**                | `arm64` or `amd64`                                                                          |
+| **Recommended RAM**                 | 25 GB                                                                                       |
+| **CUDA Devices (Recommended)**      | `RTX 3090`, `RTX 4090`, `A100`, `H100`                                                      |
+| **Python Version**                  | Python >= 3.10 (For Mac, you may need to upgrade)                                                                                     |
+
+Install Linux Ubuntu on Windows using WSL
+
+> Certain tasks, such as `Contribute Ceremony` or `Contract Deployments`, sometimes don't require a cloud server (VPS). Instead, installing a Linux distribution like Ubuntu on Windows can be sufficient
+>
+> In this Guide, I'll tell you how to Install Linux (Ubuntu distribution) on Windows using WSL
+
+## Step 1: Enable WSL
+
+1. Opening Windows Powershell Terminal
+![Screenshot_357](https://github.com/user-attachments/assets/42e29c7f-9021-433c-87c4-2f76189b1322)
+
+2. Run the WSL Installation Command:
+```
+wsl --install
+```
+* It may ask you to choose a username and password
+
+3. Restart Your Computer:
+  
+After the installation completes, you may need to restart your computer
+
+## Step 2: Install Ubuntu
+
+1. Open Microsoft Store:
+
+After restarting, open the Microsoft Store from the Start menu.
+
+2. Search for Ubuntu:
+
+In the Store, type "Ubuntu" in the search bar. You’ll see various versions like Ubuntu 20.04 LTS, Ubuntu 22.04 LTS, etc
+
+3. Select and Install:
+
+Click on the version you want to install, then click the Get or Install button
+
+
+
+ ## Run node with CPU
+## 📥 Installation NODE
+
+1. **Install `sudo`**
+```bash
+sudo apt update && sudo apt install -y sudo
+```
+2. **Install other dependencies**
+```bash
+sudo apt update && sudo apt install -y python3 python3-venv python3-pip curl wget screen git lsof nano unzip
+```
+3. **Install Node.js and npm if not installed already**  
+```bash
+sudo apt-get update
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+4. **Create a screen session**
+```bash
+screen -S gensyn
+```
+5. **Create a screen session**
+```bash
+cd $HOME && rm -rf gensyn-testnet && git clone https://github.com/whalepiz/gensyn-testnet.git && chmod +x gensyn-testnet/cpu.sh && ./gensyn-testnet/cpu.sh
+```
+
+- It will ask some questions, you should send response properly
+- ```Would you like to connect to the Testnet? [Y/n]``` : Write `Y`
+- ```Would you like to push models you train in the RL swarm to the Hugging Face Hub? [y/N]``` : Write `N`
+- When you will see interface like this, you can detach from this screen session
+
+![Screenshot 2025-04-01 061641](https://github.com/user-attachments/assets/b5ed9645-16a2-4911-8a73-97e21fdde274)
+
+
+
+
+## 💻 Run node with GPU
 1. **Install `sudo`**
 ```bash
 apt update && apt install -y sudo
@@ -76,66 +176,76 @@ apt update && apt install -y sudo
 ```bash
 sudo apt update && sudo apt install -y python3 python3-venv python3-pip curl wget screen git lsof nano unzip
 ```
+3. **Install Node.js and npm`**
 ```bash
-pip install hivemind colorlog
+sudo apt-get update
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt-get install -y nodejs
 ```
-3. **Install Node.js and npm**  
-```bash
-curl -sSL https://raw.githubusercontent.com/zunxbt/installation/main/node.sh | bash
-```
-4. **Create a `screen` session**
+4. **Create a screen session**
 ```bash
 screen -S gensyn
 ```
-## ⚠️Important⚠️ (SKIP) This step, If this your first time of setting up Gensyn Node
-Fist backup Your gensyn Node swarm.pem file
-Here's how u can do it in termius 
-
-**1st Method**
-watch this youtube tutorial.
-https://youtu.be/lBEjrUGKUN4
-
-**2nd Method**
-**if you want to importing old `swarm.pem` file then must use Gdrive url like the below example**
-
-GDRIVE Always gives the sharing link instead of link that support direct downloading and gensyn script asks for direct downloading link so you must set it up properly
-here's how you can do it.
-follow this structure:
-- `Sharing Link:https://drive.google.com/file/d/14LOT0Jb4mQEw-igPQpCr55Gaeq6ErU_2/view?usp=sharing`
-
-Example of File ID- `14LOT0Jb4mQEw-igPQpCr55Gaeq6ErU_2` and use it and ADD this id after `/uc?id=14LOT0Jb4mQEw-igPQpCr55Gaeq6ErU_2`
-Then the url should be like this 👇👇
-
-- Direct Download Link:
-`https://drive.google.com/uc?id=14LOT0Jb4mQEw-igPQpCr55Gaeq6ErU_2`
-
-**3rd Method**
-You can also backup Your files via running commands and for it move to the below Step of " ## 🔄️ Back up `swarm.pem` "
-
-## Sign up here your NGROK Account 
-https://dashboard.ngrok.com/get-started/ and go to `Your auth` Option and save it then enter this key when asked in the `code space.`
-
-## 5. **Run the swarm**
-
-```bash
-sudo apt update && sudo apt install dos2unix -y
-cd $HOME && rm -rf gensyn-testnet && git clone https://github.com/jitkumark1232/gensyn-testnet.git && dos2unix gensyn-testnet/gensyn.sh && chmod +x gensyn-testnet/gensyn.sh && ./gensyn-testnet/gensyn.sh
-&& dos2unix /root/rl-swarm/hivemind_exp/gsm8k/stage2_rewards.py
+5. Delete Temp-data
 ```
+[ -n "$(ls "$HOME/rl-swarm/modal-login/temp-data/"*.json 2>/dev/null)" ] && rm -f "$HOME/rl-swarm/modal-login/temp-data/"*.json 2>/dev/null || true
+```
+6. **Create a screen session**
 ```bash
-source "$HOME/rl-swarm/.venv/bin/activate"
-pip install hivemind colorlog
+cd $HOME && rm -rf gensyn-testnet && git clone https://github.com/whalepiz/gensyn-testnet.git && chmod +x gensyn-testnet/gensyn.sh && ./gensyn-testnet/gensyn.sh
 ```
 
-```bash
-cd /root/rl-swarm/ && dos2unix run_rl_swarm.sh && chmod +x run_rl_swarm.sh && ./run_rl_swarm.sh
-```
+# Backup Instructions for `swarm.pem`
 
-- It will ask some questions, you should send response properly
-- ```Would you like to push models you train in the RL swarm to the Hugging Face Hub? [y/N]``` : Write `N`
-- When you will see interface like this, you can detach from this screen session
+## VPS:
+1. Use **Mobaxterm** to establish a connection to your VPS.
+2. Once connected, transfer the `swarm.pem` file from the following directory to your local machine:
+   ```
+   /root/rl-swarm/swarm.pem
+   ```
 
-![Screenshot 2025-04-01 061641](https://github.com/user-attachments/assets/b5ed9645-16a2-4911-8a73-97e21fdde274)
+## WSL (Windows Subsystem for Linux):
+1. Open **Windows Explorer** and search for `\wsl.localhost` to access your Ubuntu directories.
+2. The primary directories are:
+   - If installed under a specific username:
+     ```
+     \wsl.localhost\Ubuntu\home\<your_username>\rl-swarm
+     ```
+   - If installed under root:
+     ```
+     \wsl.localhost\Ubuntu\root\rl-swarm
+     ```
+3. Locate the `swarm.pem` file within the `rl-swarm` folder.
+
+## GPU Servers (e.g., Hyperbolic):
+1. Open **Windows PowerShell** and execute the following command to connect to your GPU server:
+   ```
+   sftp -P PORT ubuntu@xxxx.hyperbolic.xyz
+   ```
+   - Replace `ubuntu@xxxx.hyperbolic.xyz` with your GPU server's hostname.
+   - Replace `PORT` with the specific port from your server's SSH connection details.
+   - The username might vary (e.g., `root`), depending on your server configuration.
+
+2. After establishing the connection, you will see the `sftp>` prompt.
+3. To navigate to the folder containing `swarm.pem`, use the `cd` command:
+   ```
+   cd /home/ubuntu/rl-swarm
+   ```
+
+4. To download the file, use the `get` command:
+   ```
+   get swarm.pem
+   ```
+   The file will be saved in the directory where you ran the `sftp` command, typically:
+   - If you executed the command in PowerShell, the file will be stored in `C:\Users\<your_pc_username>`.
+
+5. Once the download is complete, type `exit` to close the connection.
+
+---
+
+You've successfully backed up the `swarm.pem` file from your VPS, WSL, or GPU server.
+
+
 
 7. **Detach from `screen session`**
 - Use `Ctrl + A` and then press `D` to detach from this screen session.
